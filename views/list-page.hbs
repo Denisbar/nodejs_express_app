@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+        <section class="content">
+            <h1>Question List</h1>
+            <div class="col-md-8 col-md-offset-2">
+                <h3>-- Hello {{ses}}, welcome to FlowStackOver --</h3>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <a href="/list-page"><button type="button" class="btn btn-success btn-filter">All Questions</button></a>
+                                <a href="/not-answered"><button type="button" class="btn btn-warning btn-filter">Not Answered</button></a>
+                                <a href="/answered"><button type="button" class="btn btn-danger btn-filter">Answered</button></a>
+                                <a href="/ask-question"><button type="button" class="btn btn-default btn-filter">Ask Question</button></a>
+                            </div>
+                        </div>
+                        {{err}}
+                        <div class="table-container">
+                            <table class="table table-filter">
+                                <tbody>
+                                    {{#each questions}}
+                                        <tr>
+                                            <td>
+                                                <div class="media">
+                                                    <div class="media-body">
+                                                        <h4><a href="/question/{{this.question_id}}">{{this.title}}</a></h4>
+                                                        <p class="summary">{{this.question_body}}</p>
+                                                        <h5><a href="/question/{{this.question_id}}">Open This Question -></a></h5>
+                                                        <h6>Question Id {{this.question_id}}. Was asked by-{{this.user_name}}</h6>
+                                                        {{#if this.is_answered}}
+                                                            <h1 class="answered">Answered</h1>
+                                                        {{else}}
+                                                            <h1 class="notanswered">Not Answered</h1>
+                                                        {{/if}}
+                                                        <form action="/is-answered/{{this.question_id}}" method="post">
+                                                            <button class="btn btn-success btn-filter" type="submit" >Mark as answered</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

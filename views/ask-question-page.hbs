@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>Ask question</h1>
+    <form action="/ask-question" method="post">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" placeholder="Question Title" name="title" class="form-control" id="title" placeholder="Question Title" required />
+        </div>
+
+        <div class="form-group">
+            <label for="comment">Question:</label>
+            <textarea class="form-control" rows="5" placeholder="Type question" id="comment" name="question" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-block btn-danger btn-lg">Ask Question</button>
+    </form>
+    <div style="margin-top: 20px">
+        <a href="/list-page"><h3>Go back to the list of questions.</h3></a>
+    </div>
+</div>

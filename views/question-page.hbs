@@ -1,0 +1,146 @@
+<style>
+body {
+font-family: 'Open Sans', sans-serif;
+color: #353535;
+}
+.content h1 {
+text-align: center;
+}
+.content .content-footer p {
+color: #6d6d6d;
+font-size: 12px;
+text-align: center;
+}
+.content .content-footer p a {
+color: inherit;
+font-weight: bold;
+}
+.content{
+width: 100%;
+}
+.col-md-8{
+max-width: 100%;
+}
+
+
+/*	--------------------------------------------------  */
+
+.panel {
+border: 1px solid #ddd;
+background-color: #fcfcfc;
+}
+.panel .btn-group {
+margin: 15px 0 30px;
+}
+.panel .btn-group .btn {
+transition: background-color .3s ease;
+}
+.table-filter {
+background-color: #fff;
+border-bottom: 1px solid #eee;
+}
+.table-filter tbody tr:hover {
+background-color: #eee;
+}
+.table-filter tbody tr td {
+padding: 10px;
+vertical-align: middle;
+border-top-color: #eee;
+}
+.table-filter tbody tr.selected td {
+background-color: #eee;
+}
+.table-filter tr td:first-child {
+width: 38px;
+}
+.table-filter tr td:nth-child(2) {
+width: 35px;
+}
+.table-filter .media .title {
+color: #2BBCDE;
+font-size: 14px;
+font-weight: bold;
+line-height: normal;
+margin: 0;
+}
+.table-filter .media .title span {
+font-size: .8em;
+margin-right: 20px;
+}
+</style>
+    <div class="container">
+    <div class="row">
+        <section class="content">
+            <h1>Question Page</h1><!--This is question id-->
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <a href="/list-page"><button type="button" class="btn btn-success btn-filter">All Questions</button></a>
+                                <a href="/not-answered"><button type="button" class="btn btn-warning btn-filter">Not Answered</button></a>
+                                <a href="/answered"><button type="button" class="btn btn-danger btn-filter">Answered</button></a>
+                                <a href="/ask-question"><button type="button" class="btn btn-default btn-filter">Ask Question</button></a>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="table table-filter">
+                                <h2>Question:</h2>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="media">
+                                            <div class="media-body">
+                                                <h4>
+                                                    {{#each questions}}
+                                                        {{this.title}}
+                                                    {{/each}}
+                                                </h4>
+                                                <p class="summary">
+                                                    {{#each questions}}
+                                                        {{this.question_body}}
+                                                    {{/each}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <table class="table table-filter">
+                        <h2>All answers:</h2>
+                        <tbody>
+                            {{#each answers}}
+                                <tr>
+                                    <td>
+                                        <div class="media">
+                                            <div class="media-body">
+                                                <h4 class="title">
+                                                    Answer#{{this.id}}
+                                                </h4>
+                                                <p>Question answer:</p>
+                                                <p class="summary"><i>{{this.text}}</i></p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                    <div class="container">
+                        <h1>Answer This Question</h1>
+                        <form action="/add-answer/{{id}}" method="post">
+                            <div class="form-group">
+                                <label for="comment">Answer:</label>
+                                <textarea class="form-control" rows="5" id="answer" placeholder="Type your answer..." name="answer" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-block btn-danger btn-lg">Answer Question</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

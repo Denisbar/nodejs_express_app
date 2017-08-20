@@ -37,7 +37,7 @@ app.use(expressSession({secret: 'mysecret', saveUninitialized: false, resave: fa
 
 app.use('/', index);
 app.use('/', foo);
-app.use('/',listPage);
+app.use('/', listPage);
 app.use('/', questionId);
 app.use('/', isAnsweredId);
 app.use('/', addAnswerId);

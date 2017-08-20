@@ -8,7 +8,7 @@ var db = require('../db');
 
 var sql = 'INSERT INTO Questions SET ?';
 /* POST ask-question page. */
-router.post('/ask-question', function(req, res, next) {
+router.post('/ask-question', function(req, res) {
     var item = {
         title: req.body.title,
         question_body: req.body.question,

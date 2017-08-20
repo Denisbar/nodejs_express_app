@@ -8,7 +8,7 @@ var db = require('../db');
 
 var sql = 'SELECT Questions.is_answered, Questions.title, Questions.question_id, Questions.question_body, Users.user_name FROM Questions INNER JOIN Users ON Users.id = Questions.author_id AND Questions.is_answered = 1';
 /* GET answered page. */
-router.get('/answered', function(req, res, next) {
+router.get('/answered', function(req, res) {
     db.query(sql, function(err, rows){
         res.render('answered-question-page', { title: 'Answered', ses: sess.username, questions: rows });
         console.log(sess.username);

@@ -7,7 +7,7 @@ var mysql = require('mysql');
 var db = require('../db');
 
 /* POST is-answered/:id page. */
-router.post('/is-answered/:id', function(req, res, next) {
+router.post('/is-answered/:id', function(req, res) {
     var id = req.params.id;
     db.query("UPDATE Questions SET is_answered = '1' WHERE question_id = '"+id+"'", function(err, rows){
         if (err) {

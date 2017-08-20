@@ -9,7 +9,7 @@ var db = require('../db');
 var sql = 'INSERT INTO Answers SET ?';
 
 /* POST add-answer/:id page. */
-router.post('/add-answer/:id', function(req, res, next) {
+router.post('/add-answer/:id', function(req, res) {
     var item = {
         text: req.body.answer,
         question_id: req.params.id,
